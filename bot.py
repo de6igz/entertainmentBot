@@ -31,6 +31,8 @@ def main(message):
         show_top10_games_all_time(message)
     if message.text == 'Топ 10 РПГ игр':
         show_top10_rpg(message)
+    if message.text == 'Топ 10 шутеров':
+        show_top10_shooters(message)
 
 
 def show_games(message):
@@ -55,6 +57,16 @@ def show_top10_rpg(message):
     games_top_10_rpg = cursor.fetchall()
     temp = []
     for row in games_top_10_rpg:
+        bot.send_message(message.chat.id,
+                         f'<i><b>Название</b></i>: {row[0]}\n<i><b>Платформы:</b></i> {row[1]}\n<i><b>Дата выхода:</b></i> {row[2]}\n<i><b>Краткое описание:</b></i> {row[3]}\n<i><b>Оценка на метакритике:</b></i> {row[4]}',
+                         parse_mode='HTML')
+
+
+def show_top10_shooters(message):
+    cursor.execute('select * from top10_shooters')
+    games_top_10_shooters = cursor.fetchall()
+    temp = []
+    for row in games_top_10_shooters:
         bot.send_message(message.chat.id,
                          f'<i><b>Название</b></i>: {row[0]}\n<i><b>Платформы:</b></i> {row[1]}\n<i><b>Дата выхода:</b></i> {row[2]}\n<i><b>Краткое описание:</b></i> {row[3]}\n<i><b>Оценка на метакритике:</b></i> {row[4]}',
                          parse_mode='HTML')
