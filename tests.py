@@ -11,5 +11,11 @@ except sqlite3.Error as error:
 
 cursor.execute('select * from top10_games_all_time')
 games = cursor.fetchall()
-for row in games:
-    print(f'название {row[0]}')
+massiv = []
+"""for row in games:
+    massiv.append(row)"""
+massiv.append(games)
+    #print(f'Название: {row[0]}\n Платформы: {row[1]}')
+print(' '.join(str(massiv)))
+"""for row in massiv:
+    print(f'Название : {row[0]}\nПлатформы : {row[1]}\nГод выхода : {row[2]}')"""

@@ -41,8 +41,9 @@ def show_games_from_categories(message):
     if message.text == 'Топ 10 лучших игр всех времен':
         cursor.execute('select * from top10_games_all_time')
         games_from_top10_best = cursor.fetchall()
+        temp = []
         for row in games_from_top10_best:
-            bot.send_message(message.chat.id, f'Название: {row[0]}\n Платформы: {row[1]}\n Дата выхода: {row[2]}\n Краткое описание: {row[3]}\n Оценка на метакритике: {row[4]}')
+            bot.send_message(message.chat.id, f'<i><b>Название</b></i>: {row[0]}\n<i><b>Платформы:</b></i> {row[1]}\n<i><b>Дата выхода:</b></i> {row[2]}\n<i><b>Краткое описание:</b></i> {row[3]}\n<i><b>Оценка на метакритике:</b></i> {row[4]}',parse_mode='HTML')
 
 
 bot.infinity_polling()
