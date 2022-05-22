@@ -43,8 +43,13 @@ def main(message):
         show_top10_fantastic_movies(message)
     if message.text == 'Книги📚':
         show_books(message)
-    if message.text=='Топ 10 кинг в жанре антиутопия':
+    if message.text == 'Топ 10 кинг в жанре антиутопия':
         show_top10_antiutopia_books(message)
+    if message.text == 'Топ 10 кинг в жанре психоделика':
+        show_top10_psycho_books(message)
+    if message.text=='Топ 10 книг в жанре гуманитарная фантастика':
+        show_top10_gumanfant_books(message)
+
 
 def show_games(message):
     games_categories = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -134,6 +139,26 @@ def show_top10_antiutopia_books(message):
     top10_antiutopia_books = cursor.fetchall()
     temp = []
     for row in top10_antiutopia_books:
+        bot.send_message(message.chat.id,
+                         f'<i><b>Название</b></i>: {row[0]}\n<i><b>Автор:</b></i> {row[1]}\n<i><b>Синопсис:</b></i> {row[2]}\n<i><b>Оценка:</b></i> {row[3]}',
+                         parse_mode='HTML')
+
+
+def show_top10_psycho_books(message):
+    cursor.execute('select * from top10_psycho_books order by score desc')
+    top10_psycho_books = cursor.fetchall()
+    temp = []
+    for row in top10_psycho_books:
+        bot.send_message(message.chat.id,
+                         f'<i><b>Название</b></i>: {row[0]}\n<i><b>Автор:</b></i> {row[1]}\n<i><b>Синопсис:</b></i> {row[2]}\n<i><b>Оценка:</b></i> {row[3]}',
+                         parse_mode='HTML')
+
+
+def show_top10_gumanfant_books(message):
+    cursor.execute('select * from top10_gumanfant_books order by score desc')
+    top10_gumanfant_books = cursor.fetchall()
+    temp = []
+    for row in top10_gumanfant_books:
         bot.send_message(message.chat.id,
                          f'<i><b>Название</b></i>: {row[0]}\n<i><b>Автор:</b></i> {row[1]}\n<i><b>Синопсис:</b></i> {row[2]}\n<i><b>Оценка:</b></i> {row[3]}',
                          parse_mode='HTML')
