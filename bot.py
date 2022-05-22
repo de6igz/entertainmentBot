@@ -33,6 +33,8 @@ def main(message):
         show_top10_rpg(message)
     if message.text == 'Топ 10 шутеров':
         show_top10_shooters(message)
+    if message.text == 'Фильмы🎬':
+        show_movies(message)
 
 
 def show_games(message):
@@ -70,6 +72,13 @@ def show_top10_shooters(message):
         bot.send_message(message.chat.id,
                          f'<i><b>Название</b></i>: {row[0]}\n<i><b>Платформы:</b></i> {row[1]}\n<i><b>Дата выхода:</b></i> {row[2]}\n<i><b>Краткое описание:</b></i> {row[3]}\n<i><b>Оценка на метакритике:</b></i> {row[4]}',
                          parse_mode='HTML')
+
+
+def show_movies(message):
+    movies_categories = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    movies_categories.add('🔙Назад в главное меню', 'Топ 10 ужасов', 'Топ 10 Комедий', 'Топ 10 Фантастики',
+                          row_width=1)
+    msg = bot.send_message(message.chat.id, '<i>Выбери жанр игр</i>', reply_markup=movies_categories, parse_mode='HTMl')
 
 
 bot.infinity_polling()
