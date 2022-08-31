@@ -1,2 +1,3 @@
 # Entertainment bot
-<i>Данный бот помогает выбрать развлечение на вечер по категориям </i>
+It is bot that can help you find an entertainment in the evening
+### Demo [![Watch the video](https://img.youtube.com/vi/ccsTOdx-QeY/maxresdefault.jpg)](https://youtu.be/ccsTOdx-QeY)
